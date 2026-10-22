@@ -1,0 +1,15 @@
+# local and generated
+.DS_Store
+*.log
+__pycache__/
+.venv/
+node_modules/
+# secrets never belong here
+*.pem
+*.key
+# Claude Code local settings and state
+.claude/settings.local.json
+statusline-state/
+data/
+*.hdf5
+work/

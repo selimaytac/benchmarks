@@ -1,0 +1,8 @@
+h5py
+numpy
+sqlite-vec==0.1.9
+sqlean.py
+lancedb==0.40.0
+duckdb==2.0.0
+psycopg[binary]==3.3.6
+pgvector==0.5.1
