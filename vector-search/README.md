@@ -2,7 +2,7 @@
 
 How fast do four embedded or self-hosted vector engines answer a top-10 query on 1.18M vectors, when each is tuned to the same recall?
 
-![DuckDB, 4x faster](card.png)
+![DuckDB, 3x faster](card.png)
 
 ## Result
 
@@ -37,7 +37,7 @@ mkdir -p data && curl -L -o data/glove-100-angular.hdf5 http://ann-benchmarks.co
 docker run -d --name pgbench -e POSTGRES_PASSWORD=bench -p 5433:5432 --shm-size=2g pgvector/pgvector:pg17
 
 python run.py duckdb --knob 800
-python run.py pgvector --knob 1000
+python run.py pgvector --knob 600
 python run.py lancedb --knob 1000:200
 python run.py sqlitevec
 ```
