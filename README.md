@@ -14,7 +14,7 @@ Developer tools measured side by side: same machine, same data, each tool's docu
 - Each tool with its defaults first, then any setting its own docs recommend, named in the results.
 - Speed is compared at equal accuracy where accuracy can differ.
 - Several rounds, interleaved, median reported; the run count is in each folder's README.
-- Raw results are in each folder as `results.jsonl`.
+- Raw results are in the folder as `results.jsonl` where a run has more than one round.
 
 Found a mistake or a fairer setting? Open an issue with the change and I'll rerun it.
 

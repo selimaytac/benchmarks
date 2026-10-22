@@ -8,7 +8,7 @@ How fast do four embedded or self-hosted vector engines answer a top-10 query on
 
 All at recall@10 ≈ 0.94, one client sending one query at a time, median of 3 interleaved rounds of 1000 queries. pgvector runs in Docker; the other three run in-process:
 
-| Engine | Index | Search setting | recall@10 | p50 | p99 | Index build | On disk |
+| Engine | Index | Search setting | recall@10 | p50 | p99 | Load + index | On disk |
 |---|---|---|---|---|---|---|---|
 | DuckDB 2.0.0 + vss | HNSW, m 16, ef_construction 128 (defaults) | `hnsw_ef_search = 800` | 0.939 | 3.2 ms | 5.8 ms | 74 s | 1.1 GB |
 | pgvector 0.8.7, Postgres 17 | HNSW, m 16, ef_construction 128 | `hnsw.ef_search = 600` | 0.939 | 10.4 ms | 28.6 ms | 300 s | 1.4 GB |
@@ -17,7 +17,7 @@ All at recall@10 ≈ 0.94, one client sending one query at a time, median of 3 i
 
 With each engine's default search settings, recall@10 was 0.75 (DuckDB), 0.72 (pgvector) and 0.29 (LanceDB), so comparing defaults compares different accuracy.
 
-Both HNSW indexes use the same graph settings, m 16 and ef_construction 128 (DuckDB vss's defaults). With pgvector's own default ef_construction of 64, it needed `ef_search = 1000` to reach the same recall and took 14.9 ms per query.
+Both HNSW indexes use the same graph settings, m 16 and ef_construction 128 (DuckDB vss's defaults). With pgvector's own default ef_construction of 64, it needed `ef_search = 1000` to reach the same recall and took 13–17 ms per query (earlier rounds, with other work on the machine).
 
 ## What this does and doesn't tell you
 
@@ -42,9 +42,11 @@ Both HNSW indexes use the same graph settings, m 16 and ef_construction 128 (Duc
 ```sh
 pip install -r requirements.txt
 mkdir -p data && curl -L -o data/glove-100-angular.hdf5 http://ann-benchmarks.com/glove-100-angular.hdf5
-docker run -d --name pgbench -e POSTGRES_PASSWORD=bench -p 5433:5432 --shm-size=2g pgvector/pgvector:pg17
+docker run -d --name pgbench -e POSTGRES_PASSWORD=bench -p 5433:5432 --shm-size=2g pgvector/pgvector:pg17 -c shared_buffers=2GB
 
 python run.py duckdb --knob 800
+python run.py pgvector                # builds the table and index (first run only)
+docker exec pgbench psql -U postgres -c "CREATE EXTENSION IF NOT EXISTS pg_prewarm; SELECT pg_prewarm('items_emb_idx'), pg_prewarm('items')"
 python run.py pgvector --knob 600
 python run.py lancedb --knob 1000:200
 python run.py sqlitevec

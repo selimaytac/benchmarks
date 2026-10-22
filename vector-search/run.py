@@ -5,7 +5,7 @@
 #   --train N: smoke test on the first N vectors (own work dir, exact neighbours computed here)
 # One engine at a time; each run appends a line to results.jsonl. An engine is reused only if its index exists,
 # so a build that died half way is redone instead of measured as a full scan.
-# pgvector runs in Docker: docker run -d --name pgbench -e POSTGRES_PASSWORD=bench -p 5433:5432 --shm-size=2g pgvector/pgvector:pg17
+# pgvector runs in Docker: docker run -d --name pgbench -e POSTGRES_PASSWORD=bench -p 5433:5432 --shm-size=2g pgvector/pgvector:pg17 -c shared_buffers=2GB
 import argparse, json, os, platform, shutil, statistics as st, sys, time
 import h5py, numpy as np
 
