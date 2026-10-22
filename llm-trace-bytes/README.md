@@ -18,7 +18,7 @@ Bytes per call exported over OTLP/HTTP:
 | OpenLLMetry + `OTEL_EXPORTER_OTLP_COMPRESSION=gzip` | 1.9 KB / 0.6 KB | 32.9 KB / 13.8 KB |
 | Langfuse (gzip by default) | 1.9 KB / 0.55 KB | 32.9 KB / 13.8 KB |
 
-"Stored" is the decompressed body, what a backend keeps; "sent" is what goes over the wire. Only trace traffic is counted: OpenLLMetry also exports metrics by default, but no metrics request reached the receiver during these runs. Bytes per call were identical in every round; [results.jsonl](results.jsonl) has the default-setting rows (5 rounds each), and the rows with environment variables come from one run each.
+"Stored" is the decompressed body, what a backend keeps; "sent" is what goes over the wire. Only trace traffic is counted: OpenLLMetry also exports metrics by default, but no metrics request reached the receiver during these runs. Bytes per call were identical in every round; [results.jsonl](results.jsonl) has the default-setting rows (5 rounds each), and the rows with environment variables come from separate runs that are not in that file.
 
 **Why OpenInference is twice the size:** every SDK creates one span per call, but OpenInference stores the prompt twice, in `input.value` (the whole request JSON) and in `llm.input_messages.*.message.content`. OpenLLMetry keeps it once in `gen_ai.input.messages`, Langfuse once in `langfuse.observation.input`. [decode.py](decode.py) prints the attribute sizes of one exported span.
 
