@@ -2,11 +2,11 @@
 
 How fast do four embedded or self-hosted vector engines answer a top-10 query on 1.18M vectors, when each is tuned to the same recall?
 
-![DuckDB, 3x faster](card.png)
+![DuckDB 3x faster than pgvector](card.png)
 
 ## Result
 
-All at recall@10 ≈ 0.94, one client, median of 3 interleaved rounds of 1000 queries:
+All at recall@10 ≈ 0.94, one client sending one query at a time, median of 3 interleaved rounds of 1000 queries. pgvector runs in Docker; the other three run in-process:
 
 | Engine | Index | Search setting | recall@10 | p50 | p99 | Index build | On disk |
 |---|---|---|---|---|---|---|---|
@@ -18,6 +18,14 @@ All at recall@10 ≈ 0.94, one client, median of 3 interleaved rounds of 1000 qu
 With each engine's default search settings, recall@10 was 0.75 (DuckDB), 0.72 (pgvector) and 0.29 (LanceDB), so comparing defaults compares different accuracy.
 
 Both HNSW indexes use the same graph settings, m 16 and ef_construction 128 (DuckDB vss's defaults). With pgvector's own default ef_construction of 64, it needed `ef_search = 1000` to reach the same recall and took 14.9 ms per query.
+
+## What this does and doesn't tell you
+
+- It measures single-client latency on a warm, in-memory index for one dataset (100 dimensions, cosine). Concurrency, filtered search, writes during queries, data larger than memory and cold starts were not tested, and any of them can change the order.
+- pgvector pays for a client-server hop into a Docker VM (about 0.25 ms round trip, with the VM's 6 CPUs and 6 GB), while DuckDB, LanceDB and sqlite-vec run inside the client process. That is how most people would run each one, but it is not the same path.
+- LanceDB's IVF_PQ index only reached 0.94 recall with `nprobes 1000` (close to scanning every partition) plus `refine_factor 200`. Its HNSW-based index types were not tested and may do better.
+- The search settings (`ef_search`, `nprobes`) were chosen on the same 1000 queries that are measured; all three land within 0.001 of each other on recall.
+- The p50 across the three rounds ranged 3.1–3.7 ms (DuckDB), 10.2–11.5 ms (pgvector), 16.4–16.7 ms (LanceDB) and 144–151 ms (sqlite-vec). p99 is reported but noisy.
 
 ## Setup
 
@@ -42,4 +50,4 @@ python run.py lancedb --knob 1000:200
 python run.py sqlitevec
 ```
 
-`--train 50000 --queries 100` runs a quick smoke test on a slice of the data. Each run appends a line to `results.jsonl`; the rows in this folder are marked `default`, `sweep` (finding the setting for equal recall), `final`, and `superseded` (the earlier pgvector index with ef_construction 64).
+`--train 50000 --queries 100` runs a quick smoke test on a slice of the data. Each run appends a line to `results.jsonl`; the rows in this folder are marked `default`, `sweep` (finding the setting for equal recall), `final`, `superseded` (earlier rounds for all four engines, run while pgvector still used ef_construction 64 and with other work on the machine) and `check` (a 100-query sanity run of LanceDB's query plan).
