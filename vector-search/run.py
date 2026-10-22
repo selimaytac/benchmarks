@@ -46,7 +46,7 @@ class PgVector:
     def build(self, train):
         c = self.c
         c.execute("CREATE EXTENSION IF NOT EXISTS vector")
-        if c.execute("SELECT count(*) FROM pg_indexes WHERE tablename = 'items' AND indexdef LIKE '%hnsw%'").fetchone()[0] \
+        if c.execute("SELECT count(*) FROM pg_indexes WHERE tablename = 'items' AND indexdef LIKE '%ef_construction=''128''%'").fetchone()[0] \
                 and c.execute("SELECT count(*) FROM items").fetchone()[0] == len(train):  # smoke runs share this database
             return None  # already built; reuse it for the tuned point
         c.execute("DROP TABLE IF EXISTS items")
@@ -56,7 +56,8 @@ class PgVector:
             cp.set_types(["int4", "vector"])
             for i, v in enumerate(train): cp.write_row((i, v))
         c.execute("SET maintenance_work_mem = '1536MB'")  # pgvector README: the graph should fit in memory while building
-        c.execute("CREATE INDEX ON items USING hnsw (emb vector_cosine_ops)")
+        # same graph settings as DuckDB vss's defaults (pgvector's own default ef_construction is 64)
+        c.execute("CREATE INDEX ON items USING hnsw (emb vector_cosine_ops) WITH (m = 16, ef_construction = 128)")
         secs = time.perf_counter() - t0
         size = c.execute("SELECT pg_total_relation_size('items')").fetchone()[0]
         return secs, size
@@ -121,7 +122,7 @@ class LanceDB:
         if self.refine: s = s.refine_factor(self.refine)
         return s.to_arrow()["id"].to_pylist()
     def explain(self, q):
-        return str(self.t.list_indices())
+        return self.t.search(q, vector_column_name="emb").distance_type("cosine").limit(K).explain_plan(True)
     def close(self): pass
 
 
@@ -180,7 +181,7 @@ def main():
     built = eng.build(train)
     if built: print(f"{eng.name}: built in {built[0]:.1f} s, {built[1] / 1e6:.0f} MB", flush=True)
     plan = eng.explain(test[0]) if hasattr(eng, "explain") else "exact scan"
-    print("plan uses the index:", any(w in plan.lower() for w in ("hnsw", "ivfpq", "index scan")), flush=True)
+    print("plan uses the index:", any(w in plan.lower() for w in ("hnsw", "ivfpq", "index scan", "annsubindex", "annivf")), flush=True)
     rtt = eng.round_trip_ms() if hasattr(eng, "round_trip_ms") else None
     for q in test[o.queries:]: eng.query(q)  # warm-up queries (not measured, not in the recall set)
     lat, found = [], []

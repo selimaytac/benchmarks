@@ -6,7 +6,7 @@ Developer tools measured side by side: same machine, same data, each tool's docu
 
 | Benchmark | Question | Result |
 |---|---|---|
-| [vector-search](vector-search/) | How fast do DuckDB vss, pgvector, LanceDB and sqlite-vec answer a top-10 query on 1.18M vectors, all at the same recall? | DuckDB 3.4 ms, pgvector 14.9 ms, LanceDB 16.4 ms, sqlite-vec 150 ms (exact) |
+| [vector-search](vector-search/) | How fast do DuckDB vss, pgvector, LanceDB and sqlite-vec answer a top-10 query on 1.18M vectors, all at the same recall? | DuckDB 3.2 ms, pgvector 10.4 ms, LanceDB 16.5 ms, sqlite-vec 150 ms (exact) |
 | [llm-trace-bytes](llm-trace-bytes/) | How many bytes does each LLM tracing SDK send per call with a 32 KB prompt? | OpenInference 65.4 KB, OpenLLMetry 32.9 KB, Langfuse 13.8 KB |
 
 ## How these are run
