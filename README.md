@@ -2,7 +2,7 @@
 
 ![benchmarks](images/banner.png)
 
-Developer tools measured side by side: same machine, same data, each tool's documented settings plus the tuning named in each folder, and the scripts to run it yourself. One question per benchmark, one folder each.
+Developer tools measured side by side: same machine (where a tool runs in a container, the folder says so), same data, each tool's documented settings plus the tuning named in each folder, and the scripts to run it yourself. One question per benchmark, one folder each.
 
 | Benchmark | Question | Result |
 |---|---|---|

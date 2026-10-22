@@ -61,7 +61,7 @@ def one():
         client.chat.completions.create(model='gpt-mock', messages=messages)
     return time.perf_counter_ns() - s
 
-if os.environ.get('BENCH_FIRST_CALL_ONLY'):  # startup.py: exit right after the first completed call
+if os.environ.get('BENCH_FIRST_CALL_ONLY'):  # exit right after the first completed call (to time startup)
     one(); flush(); sys.exit(0)
 for _ in range(300):  # warm-up
     one()
