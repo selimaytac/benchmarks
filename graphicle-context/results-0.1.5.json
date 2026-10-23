@@ -1,0 +1,292 @@
+{
+ "sync": {
+  "seconds": 392.95,
+  "rc": 0
+ },
+ "L01": {
+  "context_s": 9.57,
+  "context_rounds": [
+   9.72,
+   9.22,
+   9.57
+  ],
+  "context_names_file": true,
+  "hook_s": 9.77,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8124
+ },
+ "L02": {
+  "context_s": 8.97,
+  "context_rounds": [
+   8.82,
+   8.97,
+   9.27
+  ],
+  "context_names_file": true,
+  "hook_s": 9.7,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8079
+ },
+ "L03": {
+  "context_s": 9.09,
+  "context_rounds": [
+   9.1,
+   8.96,
+   9.09
+  ],
+  "context_names_file": false,
+  "hook_s": 9.12,
+  "hook_packet": true,
+  "hook_names_file": false,
+  "packet_chars": 8072
+ },
+ "L04": {
+  "context_s": 9.49,
+  "context_rounds": [
+   9.42,
+   9.49,
+   10.46
+  ],
+  "context_names_file": true,
+  "hook_s": 9.96,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8064
+ },
+ "L05": {
+  "context_s": 9.6,
+  "context_rounds": [
+   9.6,
+   9.69,
+   9.56
+  ],
+  "context_names_file": true,
+  "hook_s": 9.84,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8125
+ },
+ "L06": {
+  "context_s": 9.53,
+  "context_rounds": [
+   9.52,
+   9.81,
+   9.53
+  ],
+  "context_names_file": true,
+  "hook_s": 9.66,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8070
+ },
+ "L07": {
+  "context_s": 9.27,
+  "context_rounds": [
+   9.14,
+   9.27,
+   9.49
+  ],
+  "context_names_file": true,
+  "hook_s": 9.37,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8006
+ },
+ "L08": {
+  "context_s": 9.76,
+  "context_rounds": [
+   9.78,
+   9.74,
+   9.76
+  ],
+  "context_names_file": false,
+  "hook_s": 9.86,
+  "hook_packet": true,
+  "hook_names_file": false,
+  "packet_chars": 8075
+ },
+ "L09": {
+  "context_s": 9.61,
+  "context_rounds": [
+   9.51,
+   9.61,
+   9.92
+  ],
+  "context_names_file": true,
+  "hook_s": 9.8,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8001
+ },
+ "L10": {
+  "context_s": 9.41,
+  "context_rounds": [
+   9.62,
+   9.29,
+   9.41
+  ],
+  "context_names_file": true,
+  "hook_s": 9.39,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8028
+ },
+ "L11": {
+  "context_s": 9.41,
+  "context_rounds": [
+   9.18,
+   9.45,
+   9.41
+  ],
+  "context_names_file": true,
+  "hook_s": 0.02,
+  "hook_packet": false,
+  "hook_names_file": false,
+  "packet_chars": 8224
+ },
+ "L12": {
+  "context_s": 9.83,
+  "context_rounds": [
+   9.72,
+   9.83,
+   10.96
+  ],
+  "context_names_file": true,
+  "hook_s": 10.22,
+  "hook_packet": true,
+  "hook_names_file": false,
+  "packet_chars": 8110
+ },
+ "L13": {
+  "context_s": 9.41,
+  "context_rounds": [
+   9.86,
+   9.35,
+   9.41
+  ],
+  "context_names_file": true,
+  "hook_s": 0.02,
+  "hook_packet": false,
+  "hook_names_file": false,
+  "packet_chars": 7512
+ },
+ "L14": {
+  "context_s": 10.34,
+  "context_rounds": [
+   10.26,
+   10.34,
+   10.49
+  ],
+  "context_names_file": true,
+  "hook_s": 10.12,
+  "hook_packet": false,
+  "hook_names_file": false,
+  "packet_chars": 8114
+ },
+ "L15": {
+  "context_s": 9.39,
+  "context_rounds": [
+   9.14,
+   9.72,
+   9.39
+  ],
+  "context_names_file": true,
+  "hook_s": 9.61,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 7592
+ },
+ "L16": {
+  "context_s": 10.01,
+  "context_rounds": [
+   10.85,
+   10.01,
+   9.9
+  ],
+  "context_names_file": true,
+  "hook_s": 10.12,
+  "hook_packet": false,
+  "hook_names_file": false,
+  "packet_chars": 8071
+ },
+ "L17": {
+  "context_s": 9.86,
+  "context_rounds": [
+   10.09,
+   9.52,
+   9.86
+  ],
+  "context_names_file": true,
+  "hook_s": 9.77,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8159
+ },
+ "L18": {
+  "context_s": 10.42,
+  "context_rounds": [
+   11.14,
+   10.42,
+   9.85
+  ],
+  "context_names_file": true,
+  "hook_s": 9.71,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8097
+ },
+ "C01": {
+  "context_s": 9.31,
+  "context_rounds": [
+   9.57,
+   9.31,
+   9.07
+  ],
+  "context_names_file": true,
+  "hook_s": 9.51,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8186
+ },
+ "C02": {
+  "context_s": 9.62,
+  "context_rounds": [
+   9.79,
+   9.62,
+   9.43
+  ],
+  "context_names_file": true,
+  "hook_s": 9.38,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8111
+ },
+ "C03": {
+  "context_s": 9.48,
+  "context_rounds": [
+   9.35,
+   9.48,
+   9.94
+  ],
+  "context_names_file": true,
+  "hook_s": 9.27,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8163
+ },
+ "C04": {
+  "context_s": 8.92,
+  "context_rounds": [
+   9.08,
+   8.92,
+   8.83
+  ],
+  "context_names_file": true,
+  "hook_s": 9.08,
+  "hook_packet": true,
+  "hook_names_file": true,
+  "packet_chars": 8025
+ }
+}

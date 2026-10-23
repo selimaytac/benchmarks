@@ -7,6 +7,7 @@ Developer tools measured side by side: same machine (where a tool runs in a cont
 | Benchmark | Question | Result |
 |---|---|---|
 | [vector-search](vector-search/) | How fast do DuckDB vss, pgvector, LanceDB and sqlite-vec answer a top-10 query on 1.18M vectors, all at the same recall (one client)? | DuckDB 3.2 ms, pgvector 10.4 ms, LanceDB 16.5 ms, sqlite-vec 150 ms (exact) |
+| [graphicle-context](graphicle-context/) | How long does Graphicle's `graphicle context` take on kubernetes, before and after its 0.1.5 fix, and does its prompt hook fit its 10 s budget? | 153.5 s → 9.5 s median; hook packet 18 of 22 |
 | [llm-trace-bytes](llm-trace-bytes/) | How many bytes does each LLM tracing SDK send per call with a 32 KB prompt? | OpenInference 65.4 KB, OpenLLMetry 32.9 KB, Langfuse 13.8 KB |
 
 ## How these are run

@@ -1,0 +1,90 @@
+{
+ "L01": {
+  "context_s": 53.0,
+  "context_names_file": true
+ },
+ "L02": {
+  "context_s": 54.8,
+  "context_names_file": true
+ },
+ "L03": {
+  "context_s": 168.1,
+  "context_names_file": false
+ },
+ "L04": {
+  "context_s": 159.0,
+  "context_names_file": true
+ },
+ "L05": {
+  "context_s": 173.5,
+  "context_names_file": true
+ },
+ "L06": {
+  "context_s": 60.6,
+  "context_names_file": true
+ },
+ "L07": {
+  "context_s": 148.0,
+  "context_names_file": true
+ },
+ "L08": {
+  "context_s": 300.7,
+  "context_names_file": true
+ },
+ "L09": {
+  "context_s": 51.4,
+  "context_names_file": true
+ },
+ "L10": {
+  "context_s": 144.8,
+  "context_names_file": true
+ },
+ "L11": {
+  "context_s": 112.0,
+  "context_names_file": true
+ },
+ "L12": {
+  "context_s": 998.9,
+  "context_names_file": false
+ },
+ "L13": {
+  "context_s": 95.8,
+  "context_names_file": true
+ },
+ "L14": {
+  "context_s": 169.2,
+  "context_names_file": false
+ },
+ "L15": {
+  "context_s": 111.0,
+  "context_names_file": true
+ },
+ "L16": {
+  "context_s": 119.4,
+  "context_names_file": true
+ },
+ "L17": {
+  "context_s": 194.7,
+  "context_names_file": true
+ },
+ "L18": {
+  "context_s": 124.5,
+  "context_names_file": true
+ },
+ "C01": {
+  "context_s": 998.1,
+  "context_names_file": false
+ },
+ "C02": {
+  "context_s": 331.2,
+  "context_names_file": true
+ },
+ "C03": {
+  "context_s": 238.8,
+  "context_names_file": true
+ },
+ "C04": {
+  "context_s": 191.6,
+  "context_names_file": false
+ }
+}
